@@ -11,6 +11,4 @@ export default {
     </Footer>
 </template>
 
-<style lang="scss" scoped>
-@use './assets/scss/main.scss' as *;
-</style>
+<style lang="scss" scoped></style>

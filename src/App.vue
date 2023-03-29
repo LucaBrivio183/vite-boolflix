@@ -21,9 +21,17 @@ export default {
     }
   },
   created() {
-
+    axios.get('https://api.themoviedb.org/3/search/movie?', {
+      params: {
+        api_key: store.config.api_key,
+        query: 'ritorno'
+      }
+    }).then((response) => {
+      console.log(response.data.results);
+    })
   }
 }
+
 </script>
 
 <template>
@@ -32,6 +40,4 @@ export default {
   <AppFooter />
 </template>
 
-<style lang="scss" scoped>
-@use './assets/scss/main.scss' as *;
-</style>
+<style lang="scss" scoped></style>
