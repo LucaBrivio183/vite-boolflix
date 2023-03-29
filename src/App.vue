@@ -4,7 +4,7 @@ import axios from 'axios';
 //function
 import { store } from './store';
 //components
-import AppHeader from './assets/components/Header/AppHeader.vue';
+import AppHeader from './assets/components/header/AppHeader.vue';
 import AppMain from './assets/components/main/AppMain.vue';
 import AppFooter from './assets/components/footer/AppFooter.vue';
 
@@ -20,22 +20,26 @@ export default {
       store
     }
   },
-  created() {
-    axios.get('https://api.themoviedb.org/3/search/movie?', {
-      params: {
-        api_key: store.config.api_key,
-        query: 'ritorno'
-      }
-    }).then((response) => {
-      console.log(response.data.results);
-    })
-  }
+  methods: {
+    searchMovie() {
+      axios.get(store.config.url_movies,
+        {
+          params: {
+            api_key: store.config.api_key,
+            query: store.searchKey
+          }
+        })
+        .then((response) => {
+          this.store.movies = response.data.results
+        })
+    }
+  },
 }
 
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @callSearch="this.searchMovie()" />
   <AppMain />
   <AppFooter />
 </template>
