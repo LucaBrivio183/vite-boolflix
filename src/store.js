@@ -6,7 +6,7 @@ export const store = reactive({
         url_movies: 'https://api.themoviedb.org/3/search/movie?',
         url_tv: 'https://api.themoviedb.org/3/search/tv?',
         api_key: 'e485e07e64f3f605cf0eb3c2b003041e',
-        language: 'en-US',
+        language: 'it',
     },
     //searchKey that take input from user
     searchKey: '',
