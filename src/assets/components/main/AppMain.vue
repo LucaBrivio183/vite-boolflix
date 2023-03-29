@@ -18,7 +18,7 @@ export default {
             <li>{{ item.title }}</li>
             <li>{{ item.original_title }}</li>
             <li>{{ item.original_language }}</li>
-            <li><lang-flag iso="en" squared="true" /></li>
+            <li><lang-flag iso="en" /></li>
             <li>{{ item.vote_average }}</li>
         </ul>
     </main>
