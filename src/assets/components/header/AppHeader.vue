@@ -13,9 +13,46 @@ export default {
 
 <template>
     <header>
-        <input type="text" v-model="store.searchKey" @keyup.enter="$emit('callSearch')">
-        <button @click="$emit('callSearch')">search</button>
+        <div class="container">
+            <h1>BOOLFIX</h1>
+            <input type="text" placeholder="Search movies or TV series" v-model="store.searchKey"
+                @keyup.enter="$emit('callSearch')">
+        </div>
     </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../../scss/main.scss' as *;
+@use '../../scss/_partials/variables' as *;
+@use '../../scss/_partials/mixins' as *;
+
+header {
+    padding: 1.25rem 0;
+    background-color: $secondary;
+
+    .container {
+        @include ms_container(75rem);
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            color: $primary;
+            font-size: 5vw;
+        }
+
+        input {
+            height: 3vw;
+            width: 20%;
+            opacity: 0.8;
+            padding: 0 10px;
+
+            &:focus {
+                outline: none;
+                opacity: 1;
+            }
+        }
+    }
+}
+</style>

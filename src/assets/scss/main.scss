@@ -2,3 +2,9 @@
 @use '_partials/variables' as *;
 @use '_partials/typography' as *;
 @use '_partials/mixins' as *;
+
+//  web app so stay in viewport
+body {
+    width: 100vw;
+    height: 100vh;
+}

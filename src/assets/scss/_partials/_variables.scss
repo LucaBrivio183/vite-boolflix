@@ -2,12 +2,6 @@
 color 
 ******/
 
-$primary: white;
+$primary: #ab0000;
 $secondary: black;
-$tertiary: gray;
-
-::root {
-    --primary: $primary;
-    --secondary: $secondary;
-    --tertiary: $tertiary;
-}
+$tertiary: #434343;
