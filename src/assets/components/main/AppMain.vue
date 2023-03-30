@@ -1,31 +1,32 @@
 <script>
-import LangFlag from 'vue-lang-code-flags';
 import { store } from '../../../store';
+import Card from './Card.vue';
+
 export default {
     name: 'Main',
+    components: {
+        Card,
+
+    },
     data() {
         return {
             store,
-            LangFlag
         }
     },
 }
 </script>
 
 <template>
-    <main>
-        <ul v-for="item in store.movies">
-            <li>{{ item.title }}</li>
-            <li>{{ item.original_title }}</li>
-            <li>{{ item.original_language }}</li>
-            <li><lang-flag :iso="item.original_language" :squared="false" /></li>
-            <li>{{ item.vote_average }}</li>
-        </ul>
-    </main>
+    <!-- movies card -->
+    <div v-for="item in store.movies">
+        <Card :title="item.title" :originalTitle="item.original_title" :originalLanguage="item.original_language"
+            :voteAverage="item.vote_average" />
+    </div>
+    <!-- TV series card -->
+    <div v-for="item in store.tvSeries">
+        <Card :title="item.name" :originalTitle="item.original_name" :originalLanguage="item.original_language"
+            :voteAverage="item.vote_average" />
+    </div>
 </template>
 
-<style lang="scss" scoped>
-ul {
-    margin: 10px auto;
-}
-</style>
+<style lang="scss" scoped></style>

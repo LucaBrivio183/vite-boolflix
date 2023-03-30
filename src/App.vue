@@ -33,14 +33,32 @@ export default {
         .then((response) => {
           this.store.movies = response.data.results
         })
+    },
+    searchTvSeries() {
+      axios.get(store.config.url_tv,
+        {
+          params: {
+            api_key: store.config.api_key,
+            query: store.searchKey,
+            language: store.config.language
+          }
+        })
+        .then((response) => {
+          this.store.tvSeries = response.data.results
+        })
+    },
+    search() {
+      this.searchMovie(),
+        this.searchTvSeries()
     }
+
   },
 }
 
 </script>
 
 <template>
-  <AppHeader @callSearch="this.searchMovie()" />
+  <AppHeader @callSearch="this.search()" />
   <AppMain />
   <AppFooter />
 </template>
