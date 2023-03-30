@@ -11,7 +11,8 @@ export default {
         originalTitle: String,
         originalLanguage: String,
         voteAverage: Number,
-        poster: String
+        poster: String,
+        overview: String
     },
     computed: {
         //function to handle mismatch between country codes and language  codes
@@ -31,6 +32,7 @@ export default {
     data() {
         return {
             store,
+            showInfo: false
         }
     },
     methods: {
@@ -43,14 +45,62 @@ export default {
 </script>
 
 <template>
-    <article>
-        <div><img :src="poster" :alt="originalTitle"></div>
-        <h3>{{ title }}</h3>
-        <h4>{{ originalTitle }}</h4>
-        <CountryFlag :country='countryToLang' size='small' />
-        <div>
-            <font-awesome-icon icon="fa-solid fa-star" v-for="n in star(voteAverage)" />
-            <font-awesome-icon icon="fa-regular fa-star" v-for="n in (5 - star(voteAverage))" />
+    <article @mouseover="this.showInfo = true" @mouseleave="this.showInfo = false">
+        <div class="card-poster"><img :src="poster" :alt="originalTitle"></div>
+        <div class="card-info" v-show="showInfo">
+            <span><b>Titolo: </b>{{ title }}</span>
+            <span><b>Titolo originale: </b>{{ originalTitle }}
+                <CountryFlag :country='countryToLang' size='small' />
+            </span>
+            <span><b>Voto: </b>
+                <font-awesome-icon icon="fa-solid fa-star" v-for="n in star(voteAverage)" />
+                <font-awesome-icon icon="fa-regular fa-star" v-for="n in (5 - star(voteAverage))" />
+            </span>
+            <span><b>Overview: </b>{{ overview }}</span>
         </div>
     </article>
 </template>
+
+<style lang="scss" scoped>
+@use '../../scss/main.scss' as *;
+@use '../../scss/_partials/variables' as *;
+@use '../../scss/_partials/mixins' as *;
+
+article {
+    position: relative;
+    background-color: $secondary;
+
+    .card-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: .625rem;
+        padding: 10px;
+        overflow-y: hidden;
+        height: 100%;
+
+        span {
+            font-size: 1.2vw;
+            vertical-align: baseline;
+
+            b {
+                font-size: 1.125rem;
+            }
+
+            .fa-star {
+                color: gold;
+                padding: 0 .3125rem;
+            }
+        }
+    }
+
+    &:hover {
+        .card-poster {
+            opacity: 0.2;
+        }
+    }
+}
+</style>

@@ -60,7 +60,8 @@ export default {
 <template>
   <AppHeader @callSearch="this.search()" />
   <AppMain />
-  <AppFooter />
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use './assets/scss/main.scss' as *;
+</style>

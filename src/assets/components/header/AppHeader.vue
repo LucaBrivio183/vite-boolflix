@@ -29,10 +29,10 @@ export default {
 header {
     padding: 1.25rem 0;
     background-color: $secondary;
+    flex-shrink: 0;
 
     .container {
-        @include ms_container(75rem);
-        width: 90%;
+        @include ms_container(75rem, 90%);
         display: flex;
         align-items: center;
         justify-content: space-between;

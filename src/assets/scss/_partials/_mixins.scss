@@ -2,7 +2,8 @@
 Container 
 **********/
 
-@mixin ms_container($maxsize) {
+@mixin ms_container($maxsize, $percsize) {
     max-width: $maxsize;
+    width: $percsize;
     margin: 0 auto;
 }
