@@ -40,7 +40,7 @@ export default {
           params: {
             api_key: store.config.api_key,
             query: store.searchKey,
-            language: store.config.language
+            language: store.config.language,
           }
         })
         .then((response) => {

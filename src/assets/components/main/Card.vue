@@ -11,11 +11,12 @@ export default {
         originalTitle: String,
         originalLanguage: String,
         voteAverage: Number,
+        poster: String
     },
     computed: {
         //function to handle mismatch between country codes and language  codes
         countryToLang() {
-            switch (this.originalLanguage) {
+            switch (this.originalLanguage) { // to do handle every possible code (overkilling)
                 case 'en':
                     return 'gb';
                 case 'he':
@@ -33,15 +34,17 @@ export default {
         }
     },
     methods: {
+        //function to visualize average vote as star  (1 to  5)
         star(voteAverage) {
             return (Math.ceil(voteAverage / 2))
-        }
+        },
     }
 }
 </script>
 
 <template>
     <article>
+        <div><img :src="poster" :alt="originalTitle"></div>
         <h3>{{ title }}</h3>
         <h4>{{ originalTitle }}</h4>
         <CountryFlag :country='countryToLang' size='small' />

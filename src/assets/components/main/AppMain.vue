@@ -6,13 +6,17 @@ export default {
     name: 'Main',
     components: {
         Card,
-
     },
     data() {
         return {
             store,
         }
     },
+    methods: {
+        compilePosterUrl(posterPath) {
+            return `${store.config.url_poster}${store.config.posterSize}${posterPath}`
+        }
+    }
 
 }
 </script>
@@ -22,13 +26,13 @@ export default {
     <!-- movies card -->
     <div v-for="item in store.movies">
         <Card :title="item.title" :originalTitle="item.original_title" :originalLanguage="item.original_language"
-            :voteAverage="item.vote_average" />
+            :voteAverage="item.vote_average" :poster="compilePosterUrl(item.poster_path)" />
     </div>
     <h2>tv series</h2>
     <!-- TV series card -->
     <div v-for="item in store.tvSeries">
         <Card :title="item.name" :originalTitle="item.original_name" :originalLanguage="item.original_language"
-            :voteAverage="item.vote_average" />
+            :voteAverage="item.vote_average" :poster="compilePosterUrl(item.poster_path)" />
     </div>
 </template>
 
