@@ -46,7 +46,10 @@ export default {
 
 <template>
     <article @mouseover="this.showInfo = true" @mouseleave="this.showInfo = false">
-        <div class="card-poster"><img :src="poster" :alt="originalTitle"></div>
+        <div class="card-poster">
+            <img v-if="poster === null" src="../../img/images-not-avaible.jpg" :alt="originalTitle">
+            <img v-else :src="poster" :alt="originalTitle">
+        </div>
         <div class="card-info" v-show="showInfo">
             <span><b>Titolo: </b>{{ title }}</span>
             <span><b>Titolo originale: </b>{{ originalTitle }}
@@ -69,10 +72,15 @@ export default {
 article {
     position: relative;
     background-color: $secondary;
+    width: 342px;
+    height: 513px;
+    overflow: hidden;
 
     .card-poster {
         img {
             display: block;
+            width: 100%;
+            height: 100%;
         }
     }
 
@@ -86,7 +94,6 @@ article {
         gap: .625rem;
         padding: 20px;
         max-height: 100%;
-
 
         span {
             font-size: 1.125rem;

@@ -6,14 +6,12 @@ import { store } from './store';
 //components
 import AppHeader from './assets/components/header/AppHeader.vue';
 import AppMain from './assets/components/main/AppMain.vue';
-import AppFooter from './assets/components/footer/AppFooter.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppMain,
-    AppFooter
   },
   data() {
     return {
@@ -22,10 +20,10 @@ export default {
   },
   methods: {
     searchMovie() {
-      axios.get(store.config.url_movies,
+      axios.get(store.config.urlApi + store.config.endpointMovies,
         {
           params: {
-            api_key: store.config.api_key,
+            api_key: store.config.apiKey,
             query: store.searchKey,
             language: store.config.language
           }
@@ -35,10 +33,10 @@ export default {
         })
     },
     searchTvSeries() {
-      axios.get(store.config.url_tv,
+      axios.get(store.config.urlApi + store.config.endpointTv,
         {
           params: {
-            api_key: store.config.api_key,
+            api_key: store.config.apiKey,
             query: store.searchKey,
             language: store.config.language,
           }
