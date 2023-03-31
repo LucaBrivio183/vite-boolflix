@@ -50,13 +50,13 @@ export default {
         <div class="card-info" v-show="showInfo">
             <span><b>Titolo: </b>{{ title }}</span>
             <span><b>Titolo originale: </b>{{ originalTitle }}
-                <CountryFlag :country='countryToLang' size='small' />
+                <CountryFlag class="flag" :country='countryToLang' size='medium' />
             </span>
             <span><b>Voto: </b>
                 <font-awesome-icon icon="fa-solid fa-star" v-for="n in star(voteAverage)" />
                 <font-awesome-icon icon="fa-regular fa-star" v-for="n in (5 - star(voteAverage))" />
             </span>
-            <span><b>Overview: </b>{{ overview }}</span>
+            <span class="overview"><b>Overview: </b>{{ overview }}</span>
         </div>
     </article>
 </template>
@@ -70,6 +70,12 @@ article {
     position: relative;
     background-color: $secondary;
 
+    .card-poster {
+        img {
+            display: block;
+        }
+    }
+
     .card-info {
         position: absolute;
         top: 0;
@@ -78,13 +84,17 @@ article {
         display: flex;
         flex-direction: column;
         gap: .625rem;
-        padding: 10px;
-        overflow-y: hidden;
-        height: 100%;
+        padding: 20px;
+        max-height: 100%;
+
 
         span {
-            font-size: 1.2vw;
-            vertical-align: baseline;
+            font-size: 1.125rem;
+            vertical-align: middle;
+
+            .flag {
+                margin: 0 0.5px;
+            }
 
             b {
                 font-size: 1.125rem;
@@ -95,6 +105,13 @@ article {
                 padding: 0 .3125rem;
             }
         }
+
+        .overview {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+
     }
 
     &:hover {
