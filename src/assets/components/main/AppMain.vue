@@ -17,7 +17,7 @@ export default {
 
 <template>
     <main>
-        <h2 v-show="!store.toogleShowAtSearch">WHAT YOU WANT TO WATCH TODAY? <font-awesome-icon
+        <h2 v-show="!store.toogleShowAtSearch">WHAT DO YOU WANT TO WATCH TODAY? <font-awesome-icon
                 icon="fa-solid fa-turn-up" /></h2>
         <div class="container">
             <h3 v-show="store.toogleShowAtSearch">MOVIES MATCHES</h3>
