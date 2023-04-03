@@ -20,7 +20,7 @@ export default {
         <h2 v-show="!store.toogleShowAtSearch">WHAT YOU WANT TO WATCH TODAY? <font-awesome-icon
                 icon="fa-solid fa-turn-up" /></h2>
         <div class="container">
-            <h3 v-show="store.toogleShowAtSearch">MOVIES MATCHES FOR "{{ store.searchKey.toUpperCase() }}"</h3>
+            <h3 v-show="store.toogleShowAtSearch">MOVIES MATCHES</h3>
             <div class="card-list"> <!-- movies list -->
                 <!-- movies card -->
                 <div v-for="item in store.movies">
@@ -29,7 +29,7 @@ export default {
             </div>
         </div>
         <div class="container">
-            <h3 v-show="store.toogleShowAtSearch">TV SHOWS MATCHES FOR "{{ store.searchKey.toUpperCase() }}"</h3>
+            <h3 v-show="store.toogleShowAtSearch">TV SHOWS MATCHES</h3>
             <div class="card-list"> <!-- TV series list -->
                 <!-- TV series card -->
                 <div v-for="item in store.tvSeries">
@@ -59,7 +59,7 @@ main {
     }
 
     .container {
-        @include ms_container(75rem, 90%);
+        @include ms_container(87.5rem, 90%);
 
         h3 {
             color: white;

@@ -3,6 +3,9 @@ import { createApp } from 'vue'
 import './assets/scss/main.scss';
 
 import App from './App.vue'
+/* import roboto slab font */
+import "@fontsource/roboto-slab"; // Defaults to weight 400.
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 

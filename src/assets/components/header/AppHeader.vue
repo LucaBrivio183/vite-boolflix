@@ -32,7 +32,7 @@ header {
     flex-shrink: 0;
 
     .container {
-        @include ms_container(75rem, 90%);
+        @include ms_container(87.5rem, 90%);
         display: flex;
         align-items: center;
         justify-content: space-between;
