@@ -107,15 +107,13 @@ export default {
             background-color: $secondary;
             padding: 20px;
             transform: rotateY(180deg);
-            overflow: hidden;
-            text-overflow: ellipsis;
 
             span {
                 font-size: 1.125rem;
-                display: block;
+                display: flex;
+                gap: 5px;
+                align-items: center;
                 margin: 10px;
-                overflow: hidden;
-                text-overflow: ellipsis;
 
                 .flag {
                     margin: 0 0.5px;
@@ -131,6 +129,11 @@ export default {
                 }
             }
 
+            .overview {
+                align-items: flex-start;
+                flex-wrap: wrap;
+                text-overflow: ellipsis;
+            }
         }
 
     }
