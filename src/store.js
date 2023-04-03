@@ -17,4 +17,6 @@ export const store = reactive({
     movies: [],
     //array of filtered TV series for showing on screen
     tvSeries: [],
+    //general toggle for showing and hiding element on page at search 
+    toogleShowAtSearch: false,
 })

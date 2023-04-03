@@ -47,7 +47,8 @@ export default {
     },
     search() {
       this.searchMovie(),
-        this.searchTvSeries()
+        this.searchTvSeries(),
+        store.toogleShowAtSearch = true
     }
 
   },

@@ -27,7 +27,6 @@ export default {
     data() {
         return {
             store,
-            showInfo: false//variable   for hover effect
         }
     },
     methods: {
@@ -40,22 +39,25 @@ export default {
 </script>
 
 <template>
-    <article @mouseover="this.showInfo = true" @mouseleave="this.showInfo = false">
-        <div class="card-poster">
-            <img src="../../img/image-not-found.png" alt="image-not-found" v-if="this.item.poster_path === null">
-            <img :src="this.store.config.urlPoster + this.store.config.posterSize + this.item.poster_path" :alt="item.title"
-                v-else>
-        </div>
-        <div class="card-info" v-show="showInfo">
-            <span><b>Titolo: </b>{{ item.title || item.name }}</span>
-            <span><b>Titolo originale: </b>{{ item.originalTitle || item.originalname }}
-                <CountryFlag class="flag" :country='countryToLang' />
-            </span>
-            <span><b>Voto: </b>
-                <font-awesome-icon icon="fa-solid fa-star" v-for="n in star(item.vote_average)" />
-                <font-awesome-icon icon="fa-regular fa-star" v-for="n in (5 - star(item.vote_average))" />
-            </span>
-            <span class="overview"><b>Overview: </b>{{ item.overview }}</span>
+    <article class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="../../img/image-not-found.png" alt="image-not-found" v-if="this.item.poster_path === null">
+                <img :src="this.store.config.urlPoster + this.store.config.posterSize + this.item.poster_path"
+                    :alt="item.title" v-else>
+            </div>
+            <div class="flip-card-back">
+                <span><b>Titolo: </b>{{ item.title || item.name }}</span>
+                <span><b>Titolo originale: </b>{{ item.original_title || item.original_name }}
+                    <CountryFlag class="flag" :country='countryToLang' />
+                </span>
+                <span><b>Voto: </b>
+                    <font-awesome-icon icon="fa-solid fa-star" v-for="n in star(item.vote_average)" />
+                    <font-awesome-icon icon="fa-regular fa-star" v-for="n in (5 - star(item.vote_average))" />
+                </span>
+                <span class="overview" v-if="this.item.overview === ''"><b>Overview: </b>No overview avaible</span>
+                <span class="overview" v-else><b>Overview: </b>{{ item.overview }}</span>
+            </div>
         </div>
     </article>
 </template>
@@ -65,60 +67,78 @@ export default {
 @use '../../scss/_partials/variables' as *;
 @use '../../scss/_partials/mixins' as *;
 
-article {
-    position: relative;
+.flip-card {
     background-color: $secondary;
-    width: 342px;
-    height: 513px;
-    overflow: hidden;
+    width: $cardWidth;
+    height: $cardHeight;
+    perspective: 1000px;
 
-    .card-poster {
-        img {
-            display: block;
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+
+        .flip-card-front {
+            position: absolute;
+            width: 100%;
             height: 100%;
-        }
-    }
+            -webkit-backface-visibility: hidden;
+            /* Safari */
+            backface-visibility: hidden;
 
-    .card-info {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        gap: .625rem;
-        padding: 20px;
-        max-height: 100%;
-
-        span {
-            font-size: 1.125rem;
-            vertical-align: middle;
-
-            .flag {
-                margin: 0 0.5px;
+            img {
+                display: block;
+                height: 100%;
             }
+        }
 
-            b {
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            /* Safari */
+            backface-visibility: hidden;
+            color: white;
+            background-color: $secondary;
+            padding: 20px;
+            transform: rotateY(180deg);
+
+            span {
                 font-size: 1.125rem;
+                display: block;
+                margin: 10px;
+
+                .flag {
+                    margin: 0 0.5px;
+                }
+
+                b {
+                    font-size: 1.125rem;
+                }
+
+                .fa-star {
+                    color: gold;
+                    padding: 0 .3125rem;
+                }
             }
 
-            .fa-star {
-                color: gold;
-                padding: 0 .3125rem;
+            .overview {
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
-        }
 
-        .overview {
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
 
+        }
 
     }
 
     &:hover {
-        .card-poster {
-            opacity: 0.2;
+        .flip-card-inner {
+            transform: rotateY(180deg);
         }
     }
 }

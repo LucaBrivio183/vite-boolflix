@@ -18,7 +18,7 @@ export default {
 <template>
     <main>
         <div class="container">
-            <h2>MOVIES</h2>
+            <h2 v-show="store.toogleShowAtSearch">MOVIES</h2>
             <div class="card-list"> <!-- movies list -->
                 <!-- movies card -->
                 <div v-for="item in store.movies">
@@ -27,7 +27,7 @@ export default {
             </div>
         </div>
         <div class="container">
-            <h2>TV SHOWS</h2>
+            <h2 v-show="store.toogleShowAtSearch">TV SHOWS</h2>
             <div class="card-list"> <!-- TV series list -->
                 <!-- TV series card -->
                 <div v-for="item in store.tvSeries">
@@ -50,7 +50,6 @@ main {
 
     .container {
         @include ms_container(75rem, 90%);
-        height: 50%;
 
         h2 {
             color: white;
@@ -62,7 +61,7 @@ main {
             display: flex;
             gap: 10px;
             overflow-x: auto;
-
+            overflow-y: hidden;
         }
     }
 }
