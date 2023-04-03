@@ -111,11 +111,10 @@ export default {
             span {
                 font-size: 1.125rem;
                 display: block;
-                align-items: center;
-                margin: 10px;
+                margin: 10px 0;
 
                 .flag {
-                    margin: 0 0.5px;
+                    margin: 0 auto;
                 }
 
                 b {
