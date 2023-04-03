@@ -17,8 +17,10 @@ export default {
 
 <template>
     <main>
+        <h2 v-show="!store.toogleShowAtSearch">WHAT YOU WANT TO WATCH TODAY? <font-awesome-icon
+                icon="fa-solid fa-turn-up" /></h2>
         <div class="container">
-            <h2 v-show="store.toogleShowAtSearch">MOVIES</h2>
+            <h3 v-show="store.toogleShowAtSearch">MOVIES MATCHES FOR "{{ store.searchKey.toUpperCase() }}"</h3>
             <div class="card-list"> <!-- movies list -->
                 <!-- movies card -->
                 <div v-for="item in store.movies">
@@ -27,7 +29,7 @@ export default {
             </div>
         </div>
         <div class="container">
-            <h2 v-show="store.toogleShowAtSearch">TV SHOWS</h2>
+            <h3 v-show="store.toogleShowAtSearch">TV SHOWS MATCHES FOR "{{ store.searchKey.toUpperCase() }}"</h3>
             <div class="card-list"> <!-- TV series list -->
                 <!-- TV series card -->
                 <div v-for="item in store.tvSeries">
@@ -48,10 +50,18 @@ main {
     background-color: $tertiary;
     flex-grow: 1;
 
+    h2 {
+        text-align: end;
+        color: white;
+        font-size: 2vw;
+        padding: 10px 0;
+        margin-right: 10%
+    }
+
     .container {
         @include ms_container(75rem, 90%);
 
-        h2 {
+        h3 {
             color: white;
             font-size: 2vw;
             padding: 10px 0;

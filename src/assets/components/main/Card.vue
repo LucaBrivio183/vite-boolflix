@@ -110,8 +110,7 @@ export default {
 
             span {
                 font-size: 1.125rem;
-                display: flex;
-                gap: 5px;
+                display: block;
                 align-items: center;
                 margin: 10px;
 
@@ -130,8 +129,6 @@ export default {
             }
 
             .overview {
-                align-items: flex-start;
-                flex-wrap: wrap;
                 text-overflow: ellipsis;
             }
         }
