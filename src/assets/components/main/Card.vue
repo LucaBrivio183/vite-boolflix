@@ -92,6 +92,7 @@ export default {
             img {
                 display: block;
                 height: 100%;
+                width: 100%;
             }
         }
 
@@ -106,11 +107,15 @@ export default {
             background-color: $secondary;
             padding: 20px;
             transform: rotateY(180deg);
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             span {
                 font-size: 1.125rem;
                 display: block;
                 margin: 10px;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 .flag {
                     margin: 0 0.5px;
@@ -125,12 +130,6 @@ export default {
                     padding: 0 .3125rem;
                 }
             }
-
-            .overview {
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-
 
         }
 
